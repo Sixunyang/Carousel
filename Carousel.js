@@ -1,5 +1,5 @@
-//其实最难的就是数字与右键的联动对应！！！
-//克隆的到第一张通过ul.style.left=0迅速位移，然后再匀速动画，实现无缝衔接。
+//In fact, the most difficult thing is the link between numbers and right buttons! ! !
+//The first photo of the clone is placed in the last one, and is quickly shifted from the last one to the first by ul.style.left=0 to achieve seamless result.
 
 
 window.onload = function () {
