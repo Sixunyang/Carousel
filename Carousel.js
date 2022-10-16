@@ -3,14 +3,13 @@
 
 
 window.onload = function () {
-    //1.封装匀速运动的函数
+    //1.  Motion function
     function animate(ele, target) {
-
         clearInterval(ele.timer)
         let speed = target > ele.offsetLeft ? 10 : -10;
         ele.timer = setInterval(function () {
             if (Math.abs(target - ele.offsetLeft) > 10) {
-                ele.style.left = ele.offsetLeft + speed + 'px' //对应的ele必须有position才能生效
+                ele.style.left = ele.offsetLeft + speed + 'px' //Attetion, the element here should have a position property in css, then it could work
             }
             else {
                 ele.style.left = target + 'px';
@@ -19,11 +18,11 @@ window.onload = function () {
         }, 30)
 
     }
-    /*  确保动画有效
+    /*  ensure the function works
     let right = document.querySelector('.right')
      animate(right, 1000) */
-    //2.根据图片的个数动态生成小圆点
-
+    
+    //2. based on the number of pictures, we danamically create the relevent dot below
     ol = document.querySelector('ol')
     ul = document.querySelector('ul')
     for (let i = 0; i < ul.children.length; i++) {
@@ -32,8 +31,8 @@ window.onload = function () {
         li.innerHTML = i + 1
     }
 
-    //3.让选中的小圆点变成pink;排他思想
-    //4.点击小圆点，图片移到对应的位置
+   //3. Let the selected dots become pink; exclusive thoughts
+     //4. Click on the small dot, the picture moves to the corresponding position
     let num = 0;
     ol.children[0].className = 'current'
     for (let i = 0; i < ul.children.length; i++) {
@@ -42,16 +41,13 @@ window.onload = function () {
                 ol.children[j].className = ''
             }
             this.className = 'current'
-
             animate(ul, -420 * i)
             num = i
         })
     }
 
-    //5.点右键，图片移到下一张
+    //5. Right click, the picture moves to the next one
     let right = document.querySelector('.right')
-
-
     right.addEventListener('click', function () {
         num++
         if (num < ul.children.length) {
@@ -64,32 +60,27 @@ window.onload = function () {
             animate(ul, -420 * num)
         }
 
-        console.log(num);
+        // console.log(num);
         if (num == 5) {
             ol.children[4].className = ''
-            ol.children[0].className = 'current' //8.到克隆的最后一张时，小圆点在1
+            ol.children[0].className = 'current' //8. When the last slider of the clone is reached, the dot should be at 1
         } else {
             for (let j = 0; j < ul.children.length - 1; j++) {
                 ol.children[j].className = ''
             }
             ol.children[num].className = 'current'
         }
-
-
-
-
-
     })
-    //6. 实现无缝从第五张到第一张，需要克隆一张照片到最后
+    
+   
+    // 6.  To achieve seamless, we need to clone a photo to the end
     let last = ul.children[0].cloneNode(true)
     ul.appendChild(last)
 
-    //7.点击右键时，小圆点到对应位置
+    //7.  click the right button, the small dot goes to the corresponding position
 
-    //9.给左键同样的功能
+   //9.  Give the same function to the left button
     let left = document.querySelector('.left')
-
-
     left.addEventListener('click', function () {
         num--
         if (num >= 0) {
@@ -102,23 +93,11 @@ window.onload = function () {
             animate(ul, -420 * num)
         }
 
-
-        /* if (num == 5) {
-            ol.children[4].className = ''
-            ol.children[0].className = 'current' //8.到克隆的最后一张时，小圆点在1
-        }  */
         for (let j = 0; j < ul.children.length - 1; j++) {
             ol.children[j].className = ''
         }
         ol.children[num].className = 'current'
 
-
-
-
-
-
     })
-
-
 
 }
