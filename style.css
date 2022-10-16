@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
@@ -13,7 +12,6 @@ img {
 .all {
   border: 1px solid rgb(204, 204, 204);
   padding: 7px;
-
   width: 420px;
   height: 300px;
   margin: 200px auto;
@@ -22,14 +20,12 @@ img {
 .screen {
   width: 420px;
   height: 300px;
-
   position: relative;
   overflow: hidden;
 }
 
 .screen ul {
   position: absolute;
-
   width: 3000px;
   height: 300px;
 }
